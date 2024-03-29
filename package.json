@@ -11,12 +11,16 @@
     "deploy": "next build && next export && npx thirdweb@latest upload out"
   },
   "dependencies": {
+    "@rainbow-me/rainbowkit": "^2.0.4",
+    "@tanstack/react-query": "^5.28.9",
     "@thirdweb-dev/react": "^4",
     "@thirdweb-dev/sdk": "^4",
     "ethers": "^5",
     "next": "^13",
     "react": "^18.2",
-    "react-dom": "^18.2"
+    "react-dom": "^18.2",
+    "viem": "2.x",
+    "wagmi": "^2.5.13"
   },
   "devDependencies": {
     "eslint": "8.11.0",

@@ -1,6 +1,8 @@
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -12,6 +14,7 @@ export default function Home() {
                 valt.
             </span>
           </h1>
+          <ConnectButton />
         </div>
       </div>
     </main>
