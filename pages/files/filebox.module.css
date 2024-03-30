@@ -1,24 +1,32 @@
 
-/* FileBox.module.css */
 .fileBox {
     display: flex;
-    align-items: center;
+    width: 20vw;
     gap: 10px;
-    background-color: #F2F2F2;
+    align-items: center;
     padding: 10px;
+    margin: 10px 0;
+    background-color: #f0f0f0;
     border-radius: 8px;
     font-family: 'Montserrat', sans-serif;
-    width: 20vw; /* Your desired width */
-    padding-top: 3.5vh;
-    font-size: 15px;
-    font-weight: bold;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .fileBox:hover {
+    background-color: #e0e0e0; /* Lighter grey on hover */
   }
   
   .icon {
-    font-size: 20px; /* Adjust the size of the icons */
+    padding-left: 12px;
+    margin-right: 10px;
+    font-size: 24px; /* Adjust icon size as needed */
   }
   
   .fileName {
-    /* Styles for the file name text */
+    
+    padding: 10px;
+    flex-grow: 1;
   }
   

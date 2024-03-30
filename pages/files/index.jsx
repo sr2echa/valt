@@ -1,6 +1,4 @@
-// pages/index.js
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Nav from './navf'; // Adjust the import path based on your folder structure
 import styles from './files.module.css';
@@ -8,27 +6,43 @@ import FileBox from './filebox'; // Adjust path as necessary
 
 const Home = () => {
   const [files, setFiles] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    // Simulating fetching data from 'public/assets/content.json'
-    fetch('/assets/content.json')
-      .then((response) => response.json())
-      .then((data) => {
-        const walletFiles = data['wallet_001'].files;
-        const fileNames = Object.keys(walletFiles).map((fileName) => ({
-          fileName
-        }));
-        setFiles(fileNames);
-      });
-  }, []);
+    const fetchFiles = () => {
+      // Replace 'your_hash_here' with the actual hash you want to query
+      const hash = localStorage.getItem('hash'); // Assuming you have the hash stored in localStorage
+      fetch(`/api/getFiles?hash=${hash}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': process.env.NEXT_PUBLIC_AUTH_TOKEN,
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const fileData = Object.entries(data).map(([fileName, cids]) => ({
+            fileName,
+            cids: Object.values(cids),
+          }));
+          setFiles(fileData);
+        })
+        .catch((error) => console.error('Error fetching files:', error));
+    };
 
-  // Function to handle search input change
-  
-  // Function to filter files based on search query
-  const filteredFiles = files.filter((file) =>
-    file.fileName.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+    // Initial fetch
+    fetchFiles();
+    
+    // Set up polling every 30 seconds (30000 milliseconds)
+    const intervalId = setInterval(fetchFiles, 30000);
+
+    // Cleanup on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div>
@@ -38,20 +52,12 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <Nav />
       <div className={styles.padding}></div>
       <main className={styles.mainBackground}>
-        {/* Search input field */}
-        
-        
-        {/* Render filtered files */}
-        {filteredFiles.length > 0 ? (
-          filteredFiles.map((file, index) => (
-            <FileBox key={index} fileName={file.fileName} />
-          ))
-        ) : (
-          <div className={styles.noResults}>No results found</div>
-        )}
+        {files.map((file, index) => (
+          <FileBox key={index} fileName={file.fileName} cids={file.cids} />
+        ))}
       </main>
     </div>
   );
