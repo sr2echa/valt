@@ -4,12 +4,39 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FiFileText, FiKey, FiUpload, FiUser, FiSearch } from 'react-icons/fi';
 import styles from './nav.module.css'; // Make sure this path is correct
+import { useRouter } from 'next/router';
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
+
 } from "../ui/dropdown-menu";
+import {
+  Cloud,
+  CreditCard,
+  Github,
+  Keyboard,
+  LifeBuoy,
+  LogOut,
+  Mail,
+  MessageSquare,
+  Plus,
+  PlusCircle,
+  Settings,
+  User,
+  UserPlus,
+  Users,
+} from "lucide-react"
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,14 +52,22 @@ import { Button } from "../ui/button"
 // Import the dialog component
 import DropzoneComponent from '../components/dropzonecomponent';
 
-export default function NavBar() {
+export default function NavBar({ searchQuery, setSearchQuery }) {
   const handleUploadFile = () => {
     console.log('Upload File clicked');
     // Set isDialogOpen to true to open the dialog
     dialog();
     // Add your logic for uploading a file
   };
-  const [open, setOpen] = useState(false);
+  const handleSearchInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+  const router = useRouter();
+
+  const handleButtonClick = () => {
+    localStorage.clear();
+    router.push('/logout'); // Replace '/another-page' with the desired path
+  };
 
   //a function to snd a post request to /api/storePassword with the body containing hash (from localstorage), passwordIdentifier and password (from the input fields)
   const handleUploadPassword = async () => {
@@ -109,7 +144,7 @@ export default function NavBar() {
       </div>
       <div className={styles.inputWrapper}>
         <label htmlFor="password">Password:</label>
-        <input type="password" id="password" placeholder="Enter password" className={styles.input} />
+        <input type="password" id="password" placeholder="Enter password" className={styles.input} value={searchQuery} onChange={handleSearchInputChange}/>
       </div>
     </div>
     <AlertDialogFooter>
@@ -125,9 +160,31 @@ export default function NavBar() {
           <span className={styles.searchIconPadding}>
             <FiSearch size={24} />
           </span>
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search..." value={searchQuery} onChange={handleSearchInputChange}/>
         </div>
-        <FiUser size={24} className={styles.profileIcon} />
+        <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline"><FiUser size={24} className={styles.profileIcon} /></Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            <User className="mr-2 h-4 w-4" />
+            <span>Profile</span>
+            
+          </DropdownMenuItem>
+          
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <LogOut className="mr-2 h-4 w-4" />
+          <button onClick={handleButtonClick}>Log Out</button>
+        </DropdownMenuItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+
       </div>
       {/* Render the dialog component when isDialogOpen is true */}
       

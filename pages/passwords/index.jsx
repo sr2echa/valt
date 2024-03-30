@@ -8,6 +8,7 @@ import PasswordBox from './passwordbox'; // Import the new component
 const Home = () => {
   // Adjusted state to hold both identifiers and their passwords
   const [passwordData, setPasswordData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchPasswords = () => {
@@ -33,6 +34,10 @@ const Home = () => {
   
     return () => clearInterval(intervalId);
   }, []);
+  const filteredPasswords = passwordData.filter(({ identifier }) =>
+  identifier.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   
 
   return (
@@ -43,14 +48,20 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <Nav />
+      <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <div className={styles.padding}></div>
 
       <main className={styles.mainBackground}>
         {/* Render PasswordBox components with both identifier and password */}
-        {passwordData.map(({ identifier, password }, index) => (
-          <PasswordBox key={index} identifier={identifier} password={password} />
-        ))}
+        {filteredPasswords.length > 0 ? (
+    // Render PasswordBox components with filtered passwords
+    filteredPasswords.map(({ identifier, password }, index) => (
+      <PasswordBox key={index} identifier={identifier} password={password} />
+    ))
+  ) : (
+    // Render message when no passwords match the search query
+    <div className={styles.noResults}>No results found</div>
+  )}
       </main>
     </div>
   );
