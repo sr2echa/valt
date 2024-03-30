@@ -1,0 +1,147 @@
+/* NavBar.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  height: 10vh;
+  position: fixed;
+  top:0px;
+}
+.uploadTrigger {
+  display: inline-flex; /* Aligns items inline */
+  align-items: center; /* Centers items vertically */
+  gap: 8px; /* Adjust based on your design */
+  background: transparent; /* Adjust as needed */
+  border: none; /* Removes border */
+  cursor: pointer; /* Changes cursor to pointer on hover */
+  padding: 5px 10px; /* Adds some padding around the contents */
+  font-size: 1rem; /* Adjust as needed */
+  /* Add any additional styling */
+
+  
+}
+.padding{
+  padding-left: 20vw;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  padding-right: 40px;
+  
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px;
+  color: #BCBCBC;
+}
+.navItem2 {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px;
+  
+}
+.navItemend {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+    position: relative;
+    padding-right: 400px;
+  }
+
+.navItem span {
+  margin-left: 8px;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 0;
+  z-index: 1000;
+}
+
+.dropdownMenu a {
+  display: block;
+}
+
+.searchBar {
+  padding-left: 100px;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 20px;
+  
+
+}
+
+.searchIconPadding {
+    padding-right: 1rem; /* Or any value you prefer */
+}
+  
+
+.searchBar input {
+
+  border: none;
+  outline: none;
+  margin-right: 8px;
+  background: white;
+}
+
+.profileIcon {
+  cursor: pointer;
+}
+.inputContainer {
+  margin-bottom: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.inputWrapper label {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 5px;
+}
+
+.custom-input {
+  border: 1px solid #000000; /* Black border */
+  border-radius: 5px; /* Curved corners */
+  padding: 8px; /* Padding for input */
+  font-family: 'Montserrat', sans-serif; /* Montserrat font */
+  font-size: 14px; /* Adjust font size as needed */
+}
+.padding2{
+  padding-left: 35px;
+}
+.input {
+  border: 1.5px solid #000000; /* Black border */
+  border-radius: 5px; /* Curved corners */
+  padding: 8px; /* Padding for input */
+}
