@@ -4,7 +4,27 @@
 </p>
 <h1 align=center>Valt</h1>
 <h3 align=center>Decentralized storage vault to store <code>files</code>, <br> <code>images</code> & <code>passwords</code>.</h3>
-<h3>Installation ✨ </h3>
+
+<h2>What does Valt aim to Solve ❓ </h2>
+<p2>Valt revolutionizes the way individuals secure and manage their sensitive data—be it personal passwords, documents, or images. In the digital age, where cyber threats loom large and data breaches are increasingly common, Valt offers a robust, decentralized solution that empowers users with unparalleled security and control over their digital assets.</p2>
+
+<h2> Key Solutions 🔐 </h2>
+<ul>
+<li><strong> Enhanced Security: </strong> By leveraging blockchain technology and decentralized storage (IPFS), Valt ensures that your sensitive data is not compramised, but securely encrypted, splitting and scattering the data pieces across multiple nodes, making unauthorized access practically impossible.</li>
+    
+<li><strong>Privacy and Anonymity:</strong>With Valt, the privacy of your data is paramount. The unique approach of using a seed image for access, combined with client-side hashing, ensures that your data's security keys never leave your device, offering a level of anonymity unmatched by traditional services.</li>
+
+<li><strong>Ownership and Control:</strong> Users have full ownership and control over their data. Thanks to the decentralized nature of blockchain and IPFS, there are no third-party intermediaries. You decide who gets access to your data, without any hidden terms or policies.</li>
+
+<li><strong>Ease of Use:</strong>Despite its sophisticated underpinnings, Valt is designed with a user-friendly interface that makes securing data as simple as uploading a photo. This accessibility means anyone can take advantage of blockchain security without needing technical expertise.</li>
+
+<li><strong>Recovery and Accessibility:</strong>The use of a seed image for vault access simplifies login processes & your unique image acts as a recoverable key, accessible only to you.</li>
+
+In essence, Valt addresses the growing need for a secure, private, and user-friendly platform for data storage. It mitigates the risks associated with centralized data storage models, making it an essential tool for anyone looking to safeguard their digital information in today's interconnected, yet perilous, digital landscape.
+    
+</p2>
+
+<h3> ✨ Installation </h3>
 
 ### * Install all the Dependencies :
     npm install 
