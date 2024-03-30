@@ -1,6 +1,6 @@
 // pages/index.js
-"use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Nav from './navf'; // Adjust the import path based on your folder structure
 import styles from './files.module.css';
@@ -8,6 +8,7 @@ import FileBox from './filebox'; // Adjust path as necessary
 
 const Home = () => {
   const [files, setFiles] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     // Simulating fetching data from 'public/assets/content.json'
@@ -22,6 +23,13 @@ const Home = () => {
       });
   }, []);
 
+  // Function to handle search input change
+  
+  // Function to filter files based on search query
+  const filteredFiles = files.filter((file) =>
+    file.fileName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
       <Head>
@@ -30,12 +38,20 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <Nav />
+      <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <div className={styles.padding}></div>
       <main className={styles.mainBackground}>
-        {files.map((file, index) => (
-          <FileBox key={index} fileName={file.fileName} />
-        ))}
+        {/* Search input field */}
+        
+        
+        {/* Render filtered files */}
+        {filteredFiles.length > 0 ? (
+          filteredFiles.map((file, index) => (
+            <FileBox key={index} fileName={file.fileName} />
+          ))
+        ) : (
+          <div className={styles.noResults}>No results found</div>
+        )}
       </main>
     </div>
   );
