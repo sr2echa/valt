@@ -3,6 +3,19 @@ import 'dropzone/dist/dropzone.css'; // Import Dropzone styles
 import styles from './styles.module.css'; // Import local module CSS
 import Dropzone from 'dropzone';
 
+//a function that will make a get request to /checkHash with the hash as a query parameter and return the response
+const checkHash = async (hash) => {
+    console.log('hash', hash);
+    const response = await fetch(`/api/checkHash?hash=${hash}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': process.env.NEXT_PUBLIC_AUTH_TOKEN
+        }
+    });
+    const r = await response.json();
+    console.log('response:', r);
+    return r[hash];
+};
 
 
 const DropzoneComponent = () => {
@@ -17,7 +30,16 @@ const DropzoneComponent = () => {
                 init: function () {
                     this.on("addedfile", function (file) {
                         generateSHA256Hash(file)
-                            .then(hash => console.log("SHA256 Hash:", hash))
+                            .then(hash => checkHash(hash))
+                            //then based on the response i want you to handle the next steps. the returned data will be of this type : { `${hash}`: true/false }. If its true, just store the hash in local storge and go to /files. else if its false, go to /register
+                            .then(data => {
+                                if (data) {
+                                    localStorage.setItem('hash', hash);
+                                    window.location.href = '/files';
+                                } else {
+                                    window.location.href = '/register';
+                                }
+                            })
                             .catch(error => console.error("Error:", error));
                     });
                 }

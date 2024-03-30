@@ -20,6 +20,7 @@
 }
 
 .title-bold {
+  margin-top: 120px;
   padding-top: 100px;
   font-weight: 700; /* Bold */
   font-size: 50px;
@@ -33,12 +34,13 @@
 .get-started-button {
   display: inline-block;
   padding: 10px 20px;
-  margin-top: 20px;
-  border: 2px dotted; /* Adjust color and style as needed */
+  margin-top: 100px;
+  border: 2px dashed black; /* Add a dashed border */
   text-decoration: none; /* Removes underline from links */
   color: black; /* Ensure button text is black */
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
+  scale: 1.25;
   border-radius: 15px; /* Adds curviness to the button */
   transition: transform 0.3s ease; /* Smooth transition for the transform */
 }

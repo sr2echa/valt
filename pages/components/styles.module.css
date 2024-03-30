@@ -1,9 +1,10 @@
 /* DropzoneComponent.module.css */
 .customDropzone {
-    width: 32.5vw; /* Adjust the width as needed */
+    width: auto; /* Adjust the width as needed */
     height: 20px; /* Adjust the height as needed */
-    margin: 20px; /* Adjust the margin as needed */
-    border-radius: 10px; /* Add curveness to the borders */
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: 15px; /* Add curveness to the borders */
     border: 2px dashed #e5e7eb; /* Add a dashed border */
     display: flex;
     align-items: center;
