@@ -106,6 +106,9 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
           <FiKey size={20} />
           <span>Passwords</span>
         </Link>
+
+        <div className={styles.padding}></div>
+
         <AlertDialog>
       <AlertDialogTrigger asChild>
         <button variant="outline">Upload File</button>
@@ -153,12 +156,13 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>
+<div className={styles.padding2}></div>
 
 
-        <div className={styles.padding}></div>
+        
         <div className={styles.searchBar}>
           <span className={styles.searchIconPadding}>
-            <FiSearch size={24} />
+            <FiSearch size={18} color='#c1c1c1'/>
           </span>
           <input type="text" placeholder="Search..." value={searchQuery} onChange={handleSearchInputChange}/>
         </div>

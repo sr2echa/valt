@@ -41,7 +41,7 @@ const Home = () => {
   
 
   return (
-    <div>
+    <div className={styles.body}>
       <Head>
         <title>Home Page</title>
         <meta name="description" content="Welcome to the home page" />
@@ -60,7 +60,10 @@ const Home = () => {
     ))
   ) : (
     // Render message when no passwords match the search query
-    <div className={styles.noResults}>No results found</div>
+    <div className={styles.noResults}>
+      <img src="https://i.imgur.com/tT9WnxW.png" width={150}/>
+      No results found
+      </div>
   )}
       </main>
     </div>

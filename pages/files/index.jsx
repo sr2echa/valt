@@ -6,6 +6,7 @@ import FileBox from './filebox'; // Adjust path as necessary
 
 const Home = () => {
   const [files, setFiles] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const fetchFiles = () => {
@@ -39,25 +40,33 @@ const Home = () => {
     
     // Set up polling every 30 seconds (30000 milliseconds)
     const intervalId = setInterval(fetchFiles, 30000);
-
+    
     // Cleanup on component unmount
     return () => clearInterval(intervalId);
   }, []);
-
+  const filteredFiles = files.filter((file) =>
+      file.fileName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
   return (
-    <div>
+    <div className={styles.body}>
       <Head>
         <title>Home Page</title>
         <meta name="description" content="Welcome to the home page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <Nav />
+      <Nav searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <div className={styles.padding}></div>
       <main className={styles.mainBackground}>
-        {files.map((file, index) => (
-          <FileBox key={index} fileName={file.fileName} cids={file.cids} />
-        ))}
+      {filteredFiles.length > 0 ? (
+          filteredFiles.map((file, index) => (
+            <FileBox key={index} fileName={file.fileName} />
+          ))
+        ) : (
+          <div className={styles.noResults}>
+            <img src="https://i.imgur.com/tT9WnxW.png" width={150}/>
+            No results found</div>
+        )}
       </main>
     </div>
   );

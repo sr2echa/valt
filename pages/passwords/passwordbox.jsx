@@ -1,14 +1,15 @@
-// components/PasswordBox.js
-import { FaUnlock } from 'react-icons/fa6';
-import React from 'react';
-import { FaCopy } from 'react-icons/fa'; // Assuming FaCopy is the correct icon
+import React, { useState } from 'react';
+import { FaUnlock, FaCopy } from 'react-icons/fa'; // Assuming these are correctly imported
 import styles from './passwordbox.module.css';
 
 const PasswordBox = ({ identifier, password }) => {
+  const [copied, setCopied] = useState(false);
+
   const handleCopyPassword = async () => {
     try {
       await navigator.clipboard.writeText(password);
-      alert('Password copied to clipboard!'); // Consider using a less intrusive notification method in production
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); // Reset copied state after 2 seconds
     } catch (err) {
       console.error('Failed to copy password:', err);
     }
@@ -24,11 +25,10 @@ const PasswordBox = ({ identifier, password }) => {
         </div>
       </div>
       <button onClick={handleCopyPassword} className={styles.copyButton}>
-        <FaCopy />
+        {copied ? 'Copied!' : <FaCopy />}
       </button>
     </div>
   );
 };
-
 
 export default PasswordBox;

@@ -6,8 +6,12 @@
   justify-content: flex-start; /* Align items to the top */
   min-height: 100vh; /* This makes sure that your container at least fills the viewport height and can expand if necessary */
   text-align: center; /* Center-aligns the text */
-  background-color: white; /* Set the background color to white */
+  /* background-color: rgb(141, 67, 67); */
   padding-top: 50px; /* Adjust as needed to position content from the top */
+  background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('https://i.imgur.com/RilJeOc.png');
 }
 
 .logo img {
@@ -35,7 +39,7 @@
   display: inline-block;
   padding: 10px 20px;
   margin-top: 100px;
-  border: 2px dashed black; /* Add a dashed border */
+  border: 2px dashed;
   text-decoration: none; /* Removes underline from links */
   color: black; /* Ensure button text is black */
   font-family: 'Montserrat', sans-serif;

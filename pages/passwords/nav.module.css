@@ -10,6 +10,7 @@
   height: 10vh;
   position: fixed;
   top:0px;
+  width: 100vw;
 }
 .uploadTrigger {
   display: inline-flex; /* Aligns items inline */
@@ -25,7 +26,7 @@
   
 }
 .padding{
-  padding-left: 20vw;
+  padding-left: 33vw;
 }
 .logo {
   display: flex;
@@ -33,6 +34,7 @@
   margin-right: 20px;
   cursor: pointer;
   padding-right: 40px;
+  margin-left: 20px;
   
 }
 
@@ -91,9 +93,12 @@
 .searchBar {
   padding-left: 100px;
   display: flex;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  height : 40px;
   border-radius: 5px;
   padding: 5px 10px;
+  justify-content: center;
+  align-items: center;
   margin-right: 20px;
   
 
