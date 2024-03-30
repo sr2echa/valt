@@ -13,7 +13,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog"
-import DropzoneComponent from './components/dropzonecomponent';
+import DropzoneComponent from './dropzonecomponent';
 const getstarted = () => {
   return (
     <div className="container">
