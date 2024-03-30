@@ -60,10 +60,27 @@ export default function NavBar({ searchQuery, setSearchQuery }){
     setSearchQuery(e.target.value);
   };
   const router = useRouter();
-  const handleUploadPassword = () => {
-    console.log('Upload Password clicked');
-    // Add your logic for uploading a password
+  const handleUploadPassword = async () => {
+    const hash = localStorage.getItem('hash');
+    const identifier = document.getElementById('passwordIdentifier').value;
+    const password = document.getElementById('password').value;
+    const response = await fetch('/api/storePassword', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': process.env.NEXT_PUBLIC_AUTH_TOKEN
+      },
+      body: JSON.stringify({
+        hash,
+        identifier,
+        password
+      })
+    });
+    console.log(hash, identifier, password)
+    const data = await response.json();
+    console.log('data:', data);
   };
+  
   const handleButtonClick = () => {
     localStorage.clear();
     router.push('/logout'); // Replace '/another-page' with the desired path
