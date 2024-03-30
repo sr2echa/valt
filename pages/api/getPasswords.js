@@ -27,6 +27,12 @@ function getPasswords(hash) {
 export default async function handler(req, res) {
     const { hash } = req.query;
     if (req.method === 'GET') {
+        
+        if (!req.headers.authorization || req.headers.authorization !== process.env.AUTH_TOKEN) {
+            res.status(401).json({ message: 'Unauthorized' });
+            return;
+        }
+        
         try {
             const passwords = await getPasswords(hash);
             let newPasswords = {};

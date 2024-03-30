@@ -49,6 +49,12 @@ async function checkIfWalletExists(walletId) {
 // The API route handler
 export default async function handler(req, res) {
     if (req.method === 'GET') {
+        
+        if (!req.headers.authorization || req.headers.authorization !== process.env.AUTH_TOKEN) {
+            res.status(401).json({ message: 'Unauthorized' });
+            return;
+        }
+        
         const { walletId } = req.query; // Extract walletId from query parameters
 
         // Validate the input

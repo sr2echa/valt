@@ -24,6 +24,12 @@ async function storePassword(hash, identifier, password) {
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
+
+        if (!req.headers.authorization || req.headers.authorization !== process.env.AUTH_TOKEN) {
+            res.status(401).json({ message: 'Unauthorized' });
+            return;
+        }
+
         const { hash, identifier, password } = req.body;
         let r = await storePassword(hash, identifier, password);
         if (!r) {

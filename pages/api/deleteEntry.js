@@ -29,6 +29,12 @@ function deleteEntry(hash, entryType, entryKey, callback) {
 
 export default function handler(req, res) {
     if (req.method === 'DELETE') {
+
+        if (!req.headers.authorization || req.headers.authorization !== process.env.AUTH_TOKEN) {
+            res.status(401).json({ message: 'Unauthorized' });
+            return;
+        }
+
         const { hash, entryType, entryKey } = req.body;
         deleteEntry(hash, entryType, entryKey, (result) => {
             if (result) {

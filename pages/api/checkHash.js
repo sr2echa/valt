@@ -2,6 +2,13 @@ import gun from '../contexts/GunContext';
 
 export default async function handler(req, res) {
     if (req.method === 'GET') {
+
+        if (!req.headers.authorization || req.headers.authorization !== process.env.AUTH_TOKEN) {
+    res.status(401).json({ message: 'Unauthorized' });
+    return;
+}
+
+
         // Fetch all wallets under the 'wallets' node
         let wallets = {};
         gun.get('valts').map().once((wallet, id) => {

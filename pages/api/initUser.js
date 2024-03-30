@@ -2,6 +2,12 @@ import gun from '../contexts/GunContext';
 
 export default function handler(req, res) {
     if (req.method === 'POST') {
+        
+        if (!req.headers.authorization || req.headers.authorization !== process.env.AUTH_TOKEN) {
+            res.status(401).json({ message: 'Unauthorized' });
+            return;
+        }
+
         const { hash, walletId } = req.body;
         if (!hash || !walletId) {
             return res.status(400).json({ message: 'Invalid request. Wallet ID or hash missing.' });
