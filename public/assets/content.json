@@ -1,0 +1,29 @@
+{
+    "wallet_001": {
+      "passwords": {
+        "email": "superSecurePassword123!",
+        "socialMedia": "anotherTopSecretPassword456!",
+        "bankAccount": "ultraSecureBankPassword789!"
+      },
+      "files": {
+        "travel_photo_2022.jpg": ["cid_travel_001", "cid_travel_002", "cid_travel_003"],
+        "resume_2022.pdf": ["cid_resume_001", "cid_resume_002", "cid_resume_003"],
+        "budget_2022.mp4": ["cid_budget_001", "cid_budget_002", "cid_budget_003"],
+        "recipes_2022.pdf": ["cid_recipes_001", "cid_recipes_002", "cid_recipes_003"]
+      }
+    },
+    "wallet_002": {
+      "passwords": {
+        "streamingService": "passwordForStreaming987!",
+        "emailWork": "workEmailPassword654!",
+        "onlineShopping": "shoppingPassword321!"
+      },
+      "files": {
+        "wedding_photo_2021.jpg": ["cid_wedding_001", "cid_wedding_002", "cid_wedding_003"],
+        "contract_2021.pdf": ["cid_contract_001", "cid_contract_002", "cid_contract_003"],
+        "recipes_2022.pdf": ["cid_recipes_001", "cid_recipes_002", "cid_recipes_003"]
+      }
+    }
+  }
+  
+  

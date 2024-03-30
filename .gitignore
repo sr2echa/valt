@@ -42,3 +42,4 @@ pnpm-lock.yaml
 
 #random
 radata-*
+*.tmp

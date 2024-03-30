@@ -1,0 +1,92 @@
+/* NavBar.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  position: absolute;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  padding-right: 40px;
+  width:100%;
+  height: auto;
+  
+}
+
+.navItems {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px;
+}
+.navItemend {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    cursor: pointer;
+    position: relative;
+    padding-right: 400px;
+  }
+
+.navItem span {
+  margin-left: 8px;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 0;
+  z-index: 1000;
+}
+
+.dropdownMenu a {
+  display: block;
+  padding: 5px 20px;
+}
+
+.searchBar {
+  padding-left: 100px;
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 20px;
+
+}
+
+.searchIconPadding {
+    padding-right: 1rem; /* Or any value you prefer */
+}
+  
+
+.searchBar input {
+
+  border: none;
+  outline: none;
+  margin-right: 8px;
+  background: white;
+}
+
+.profileIcon {
+  cursor: pointer;
+}
