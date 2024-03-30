@@ -25,7 +25,7 @@
   
 }
 .padding{
-  padding-left: 30vw;
+  padding-left: 20vw;
 }
 .logo {
   display: flex;
@@ -113,4 +113,34 @@
 
 .profileIcon {
   cursor: pointer;
+}
+.inputContainer {
+  margin-bottom: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.inputWrapper label {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 5px;
+}
+
+.custom-input {
+  border: 1px solid #000000; /* Black border */
+  border-radius: 5px; /* Curved corners */
+  padding: 8px; /* Padding for input */
+  font-family: 'Montserrat', sans-serif; /* Montserrat font */
+  font-size: 14px; /* Adjust font size as needed */
+}
+.padding2{
+  padding-left: 35px;
+}
+.input {
+  border: 1.5px solid #000000; /* Black border */
+  border-radius: 5px; /* Curved corners */
+  padding: 8px; /* Padding for input */
 }

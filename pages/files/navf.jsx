@@ -10,9 +10,20 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "../ui/alert-dialog"
+import { Button } from "../ui/button"
 // Import the dialog component
-import DeleteAlertDialog from './dialogupload';
+import DropzoneComponent from '../components/dropzonecomponent';
 
 export default function NavBar() {
   const handleUploadFile = () => {
@@ -43,19 +54,55 @@ export default function NavBar() {
           <FiKey size={20} />
           <span>Passwords</span>
         </Link>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className={styles.uploadTrigger}>
-              <FiUpload size={20} />
-              <span>Upload</span>
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem onClick={() => setOpen(true)}>Upload Files</DropdownMenuItem>
-            <DropdownMenuItem onSelect={handleUploadPassword}>Upload Passwords</DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-        <DeleteAlertDialog open={open}/>
+        <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <button variant="outline">Upload File</button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Upload File</AlertDialogTitle>
+          <AlertDialogDescription>
+           Your files will be safely saved info IPFS
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <DropzoneComponent/>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+    <div className={styles.padding2}></div>
+
+<AlertDialog>
+  <AlertDialogTrigger asChild>
+    <button className="custom-button">Upload Password</button>
+  </AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Upload Password</AlertDialogTitle>
+      <AlertDialogDescription>
+        Your passwords will be saved safely into IPFS
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <div className={styles.inputContainer}>
+      <div className={styles.inputWrapper}>
+        <label htmlFor="passwordIdentifier">Password Identifier:</label>
+        <input type="text" id="passwordIdentifier" placeholder="Enter password identifier" className={styles.input} />
+      </div>
+      <div className={styles.inputWrapper}>
+        <label htmlFor="password">Password:</label>
+        <input type="password" id="password" placeholder="Enter password" className={styles.input} />
+      </div>
+    </div>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+
+
         <div className={styles.padding}></div>
         <div className={styles.searchBar}>
           <span className={styles.searchIconPadding}>
