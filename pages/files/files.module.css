@@ -1,0 +1,13 @@
+/* Assuming this is in files.module.css */
+.mainBackground {
+  display: flex;
+  flex-direction: row; /* Align children in a row */
+  flex-wrap: wrap; /* Allow boxes to wrap as needed */
+  gap: 10px; /* Adjust based on your spacing preference */
+  justify-content: flex-start; /* Align items to the start of the container */
+  padding: 20px; /* Adds some padding around the container */
+  background-color: #FBFBFB;
+}
+.padding{
+  padding-top:10vh ;
+}

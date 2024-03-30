@@ -1,7 +1,8 @@
 import { ThirdwebProvider } from '@thirdweb-dev/react';
-import '../styles/globals.css';
+import './globals.css';
 import 'tailwindcss/tailwind.css';
 import './getstarted.css';
+import './page.module.css'
 
 const activeChain = 'ethereum';
 
