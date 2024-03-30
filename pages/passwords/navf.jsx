@@ -34,9 +34,26 @@ export default function NavBar() {
   };
   const [open, setOpen] = useState(false);
 
-  const handleUploadPassword = () => {
-    console.log('Upload Password clicked');
-    // Add your logic for uploading a password
+  //a function to snd a post request to /api/storePassword with the body containing hash (from localstorage), passwordIdentifier and password (from the input fields)
+  const handleUploadPassword = async () => {
+    const hash = localStorage.getItem('hash');
+    const identifier = document.getElementById('passwordIdentifier').value;
+    const password = document.getElementById('password').value;
+    const response = await fetch('/api/storePassword', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': process.env.NEXT_PUBLIC_AUTH_TOKEN
+      },
+      body: JSON.stringify({
+        hash,
+        identifier,
+        password
+      })
+    });
+    console.log(hash, identifier, password)
+    const data = await response.json();
+    console.log('data:', data);
   };
 
 
@@ -82,7 +99,7 @@ export default function NavBar() {
     <AlertDialogHeader>
       <AlertDialogTitle>Upload Password</AlertDialogTitle>
       <AlertDialogDescription>
-        Your passwords will be saved safely into IPFS
+        Your passwords will be securely saved into encrypted distributed systems
       </AlertDialogDescription>
     </AlertDialogHeader>
     <div className={styles.inputContainer}>
@@ -97,7 +114,7 @@ export default function NavBar() {
     </div>
     <AlertDialogFooter>
       <AlertDialogCancel>Cancel</AlertDialogCancel>
-      <AlertDialogAction>Continue</AlertDialogAction>
+      <AlertDialogAction onClick={handleUploadPassword}>Continue</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>

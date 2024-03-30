@@ -10,18 +10,30 @@ const Home = () => {
   const [passwordData, setPasswordData] = useState([]);
 
   useEffect(() => {
-    fetch('/assets/content.json')
-      .then((response) => response.json())
-      .then((data) => {
-        // Fetching both identifiers and passwords
-        const walletData = data['wallet_001'].passwords;
-        const fetchedPasswordData = Object.entries(walletData).map(([identifier, password]) => ({
-          identifier,
-          password,
-        }));
-        setPasswordData(fetchedPasswordData);
-      });
+    const fetchPasswords = () => {
+      fetch('/api/getPasswords?hash=' + localStorage.getItem('hash'), {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': process.env.NEXT_PUBLIC_AUTH_TOKEN
+        }
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const fetchedPasswordData = Object.entries(data).map(([identifier, password]) => ({
+            identifier,
+            password,
+          }));
+          setPasswordData(fetchedPasswordData);
+        });
+    };
+  
+    fetchPasswords();
+    const intervalId = setInterval(fetchPasswords, 3000);
+  
+    return () => clearInterval(intervalId);
   }, []);
+  
 
   return (
     <div>

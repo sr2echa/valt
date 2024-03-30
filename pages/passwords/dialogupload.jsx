@@ -13,7 +13,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import customdropzone from './customdropzone'; // Adjust the import path as necessary.
+import CustomDropzone from './customdropzone'; // Adjust the import path as necessary.
 
 // AlertDialogDemo.js adjustments for external control
 export function dialog({ isOpen, onClose }) {
@@ -29,7 +29,7 @@ export function dialog({ isOpen, onClose }) {
               Select a file to upload. You can drag and drop a file inside the box or click to select a file.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <customdropzone />
+          <CustomDropzone />
           <AlertDialogFooter>
             <AlertDialogCancel asChild>
               <Button variant="outline" onClick={onClose}>Cancel</Button>

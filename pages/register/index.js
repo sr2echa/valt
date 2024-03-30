@@ -6,6 +6,9 @@ export default function Home() {
   const { address, isConnected, connector } = useAccount();
 
   useEffect(() => {
+    if (!localStorage.getItem('hash')) {
+      window.location.href = '/';
+    }
     if (isConnected && address) {
       console.log(`Connected to wallet ID: ${address}`);
       localStorage.setItem('walletId', address);
@@ -14,8 +17,14 @@ export default function Home() {
   }, [isConnected, address, connector]);
 
   return (
-    <main>
-      <h1>Welcome to <span>valt.</span></h1>
+    <main className='container'>
+      <div className='logo'>
+        <img src='assets/images/valtlog.svg' alt='valt logo'/>
+      </div>
+      <p className='title-bold'><br /></p>
+      <p className="title-medium">Connect your wallet</p>
+      <p className="title-medium">to register your valt™️</p>
+      <br />
       <ConnectButton />
     </main>
   );
