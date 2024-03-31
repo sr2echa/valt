@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Nav from './navf'; // Adjust the import path based on your folder structure
 import styles from './files.module.css'; // Assuming this also contains your main container styles
 import PasswordBox from './passwordbox'; // Import the new component
+import { json } from 'react-router-dom';
 
 const Home = () => {
   // Adjusted state to hold both identifiers and their passwords
@@ -19,18 +20,24 @@ const Home = () => {
           'Authorization': process.env.NEXT_PUBLIC_AUTH_TOKEN
         }
       })
-        .then((response) => response.json())
+        // .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            return {};
+          }
+          return response.json();
+        })
         .then((data) => {
           const fetchedPasswordData = Object.entries(data).map(([identifier, password]) => ({
             identifier,
             password,
           }));
-          setPasswordData(fetchedPasswordData);
+          setPasswordData(fetchedPasswordData); 
         });
     };
   
     fetchPasswords();
-    const intervalId = setInterval(fetchPasswords, 3000);
+    const intervalId = setInterval(fetchPasswords, 1000);
   
     return () => clearInterval(intervalId);
   }, []);

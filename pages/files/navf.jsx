@@ -82,8 +82,8 @@ export default function NavBar({ searchQuery, setSearchQuery }){
   };
 
   const handleButtonClick = () => {
-    localStorage.clear();
-    router.push('/logout'); // Replace '/another-page' with the desired path
+    // localStorage.clear();
+    window.location.href ='/logout';
   };
 
 
@@ -117,7 +117,7 @@ export default function NavBar({ searchQuery, setSearchQuery }){
         <DropzoneComponent/>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          {/* <AlertDialogAction>Continue</AlertDialogAction> */}
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

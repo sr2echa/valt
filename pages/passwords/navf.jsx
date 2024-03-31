@@ -66,7 +66,7 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
 
   const handleButtonClick = () => {
     localStorage.clear();
-    router.push('/logout'); // Replace '/another-page' with the desired path
+    window.location.href ='/logout'; // Replace '/another-page' with the desired path
   };
 
   //a function to snd a post request to /api/storePassword with the body containing hash (from localstorage), passwordIdentifier and password (from the input fields)
@@ -123,7 +123,7 @@ export default function NavBar({ searchQuery, setSearchQuery }) {
         <DropzoneComponent/>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          {/* <AlertDialogAction>Continue</AlertDialogAction> */}
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

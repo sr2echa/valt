@@ -20,9 +20,6 @@ const Home = () => {
         },
       })
         .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
           return response.json();
         })
         .then((data) => {
@@ -37,9 +34,7 @@ const Home = () => {
 
     // Initial fetch
     fetchFiles();
-    
-    // Set up polling every 30 seconds (30000 milliseconds)
-    const intervalId = setInterval(fetchFiles, 30000);
+    const intervalId = setInterval(fetchFiles, 1000);
     
     // Cleanup on component unmount
     return () => clearInterval(intervalId);
@@ -60,7 +55,7 @@ const Home = () => {
       <main className={styles.mainBackground}>
       {filteredFiles.length > 0 ? (
           filteredFiles.map((file, index) => (
-            <FileBox key={index} fileName={file.fileName} />
+            <FileBox key={index} fileName={file.fileName} cids={file.cids}/>
           ))
         ) : (
           <div className={styles.noResults}>

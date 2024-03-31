@@ -5,6 +5,26 @@ import { ConnectButton } from '@rainbow-me/rainbowkit';
 export default function Home() {
   const { address, isConnected, connector } = useAccount();
 
+  function initUser(hash, walletId) {
+    fetch ('/api/initUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': process.env.NEXT_PUBLIC_AUTH_TOKEN
+      },
+      body: JSON.stringify({
+        hash,
+        walletId
+      })
+    }).then(response => {
+      if (response.ok) {
+        console.log('User initialized successfully');
+      } else {
+        console.error('User not initialized');
+      }
+    });
+  }
+
   useEffect(() => {
     if (!localStorage.getItem('hash')) {
       window.location.href = '/';
@@ -12,6 +32,7 @@ export default function Home() {
     if (isConnected && address) {
       console.log(`Connected to wallet ID: ${address}`);
       localStorage.setItem('walletId', address);
+      initUser(localStorage.getItem('hash'), address);
       window.location.href = '/files';
     }
   }, [isConnected, address, connector]);

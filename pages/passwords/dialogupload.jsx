@@ -11,8 +11,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+} from "../ui/alert-dialog";
+import { Button } from "../ui/button";
 import CustomDropzone from './customdropzone'; // Adjust the import path as necessary.
 
 // AlertDialogDemo.js adjustments for external control
