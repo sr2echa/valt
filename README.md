@@ -32,4 +32,12 @@ In essence, Valt addresses the growing need for a secure, private, and user-frie
 ### * Run the development server : 
     npm run dev
 <p>Open <a href = "http://localhost:3000">http://localhost:3000</a> with your browser to see the result.</p>
+
+<br>
+
+</samp>
+
+<samp>
+<h3>🛠️ Built by <a href ="https://github.com/sr2echa">Sreecharan S</a>, <a href = "https://github.com/lgsurith">Surith L G</a>, <a href = "https://github.com/AakritiMeh">Aakriti M </a> & 
+<a href = "https://github.com/jmt-genius">Tarun J M</a> in ⏳ < 42 hrs from Mumbai , for the World 🌎 </h3>
 </samp>
